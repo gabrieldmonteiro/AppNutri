@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="uam.trabalhocm.CadastroActivity">
+
+    <EditText
+        android:id="@+id/txtLoginCad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="Login"
+        android:inputType="textPersonName"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="85dp" />
+
+    <EditText
+        android:id="@+id/txtEmailCad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintTop_toBottomOf="@+id/txtLoginCad"
+        tools:layout_editor_absoluteX="85dp" />
+
+    <EditText
+        android:id="@+id/txtSenhaCad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="Senha"
+        android:inputType="textPassword"
+        app:layout_constraintTop_toBottomOf="@+id/txtEmailCad"
+        tools:layout_editor_absoluteX="85dp" />
+
+    <Button
+        android:id="@+id/btContinuarCad"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="166dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="60dp"
+        android:text="Continuar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtAltura" />
+
+    <EditText
+        android:id="@+id/txtPeso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="Peso"
+        android:inputType="numberDecimal"
+        app:layout_constraintTop_toBottomOf="@+id/txtSenhaCad"
+        tools:layout_editor_absoluteX="85dp" />
+
+    <EditText
+        android:id="@+id/txtAltura"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="Altura"
+        android:inputType="numberDecimal"
+        app:layout_constraintTop_toBottomOf="@+id/txtPeso"
+        tools:layout_editor_absoluteX="85dp" />
+
+</android.support.constraint.ConstraintLayout>
