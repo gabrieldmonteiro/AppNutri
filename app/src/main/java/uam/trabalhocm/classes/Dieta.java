@@ -1,4 +1,4 @@
-package uam.trabalhocm;
+package uam.trabalhocm.classes;
 
 /**
  * Created by Gabriel on 22/11/2017.

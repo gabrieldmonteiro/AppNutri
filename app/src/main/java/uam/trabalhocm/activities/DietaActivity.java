@@ -1,13 +1,15 @@
-package uam.trabalhocm;
+package uam.trabalhocm.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class CadastroActivity extends AppCompatActivity {
+import uam.trabalhocm.R;
+
+public class DietaActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cadastro);
+        setContentView(R.layout.activity_dieta);
     }
 }

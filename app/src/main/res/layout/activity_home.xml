@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="uam.trabalhocm.activities.HomeActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/lbBemVIndo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Bem vindo ao AppNutri !!!"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/lbUsuarioOn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="-"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imgIMC"
+                style="@android:style/Widget.DeviceDefault.ImageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#0000"
+                android:scaleX="0.9"
+                android:scaleY="0.9"
+                android:src="@drawable/imc"
+                android:visibility="visible" />
+
+            <ImageButton
+                android:id="@+id/imgRefeicao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#0000"
+                android:scaleX="0.9"
+                android:scaleY="0.9"
+                android:src="@drawable/refeicao" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imgDieta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#0000"
+                android:scaleX="0.9"
+                android:scaleY="0.9"
+                android:src="@drawable/dieta" />
+
+            <ImageButton
+                android:id="@+id/imgExercicios"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#0000"
+                android:scaleX="0.9"
+                android:scaleY="0.9"
+                android:src="@drawable/exercicios" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -1,4 +1,4 @@
-package uam.trabalhocm;
+package uam.trabalhocm.classes;
 
 public class Usuario {
     private String login;
