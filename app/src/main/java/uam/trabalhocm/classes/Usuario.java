@@ -1,13 +1,20 @@
 package uam.trabalhocm.classes;
 
 public class Usuario {
+    private int id;
     private String login;
     private String senha;
     private String email;
-    private float altura;
-    private float peso;
 
     public Usuario() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getLogin() {
@@ -34,19 +41,4 @@ public class Usuario {
         this.email = email;
     }
 
-    public float getAltura() {
-        return altura;
-    }
-
-    public void setAltura(float altura) {
-        this.altura = altura;
-    }
-
-    public float getPeso() {
-        return peso;
-    }
-
-    public void setPeso(float peso) {
-        this.peso = peso;
-    }
 }

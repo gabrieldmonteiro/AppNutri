@@ -9,77 +9,70 @@ import android.database.sqlite.SQLiteOpenHelper;
 import uam.trabalhocm.classes.Usuario;
 
 /**
- * Created by Gabriel on 28/11/2017.
+ * Created by Gabriel on 30/11/2017.
  */
 
 public class DbHelper extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME = "appnutri.db";
-    private static final String TABLE_NAME = "usuarios.db";
-    private static final String COLUMN_ID = "id";
-    private static final String COLUMN_LOGIN = "login";
-    private static final String COLUMN_EMAIL = "email";
-    private static final String COLUMN_SENHA = "senha";
-    private static final String COLUMN_PESO = "peso";
-    private static final String COLUMN_ALTURA = "altura";
-    SQLiteDatabase db ;
+    private static final String DATABASE_NAME = "AppNutri.db";
+    private static final String TABLE_USER = "user";
+    private static  final String COLUMN_USER_ID = "user_id";
+    private static  final String COLUMN_USER_NAME = "user_name";
+    private static  final String COLUMN_USER_EMAIL = "user_email";
+    private static  final String COLUMN_USER_PASSWORD = "user_password";
 
-    private static  final String TABLE_CREATE = "create table" + TABLE_NAME+ " (id integer primary key not null auto_increment," +
-            "login text not null, email text not null, senha text not null, peso float not null, altura float not null);";
+    private String CREATE_USER_TABLE = "CREATE TABLE "+TABLE_USER+ "("
+            +COLUMN_USER_ID +" INTEGER PRIMARY KEY AUTOINCREMENT,"+COLUMN_USER_NAME + " TEXT,"
+            + COLUMN_USER_EMAIL +" TEXT,"+COLUMN_USER_PASSWORD+ " TEXT"+")";
 
-    public DbHelper (Context context){
-        super(context, DATABASE_NAME,null,DATABASE_VERSION);
+
+    private String DROP_USER_TABLE = "DROP TABLE IF EXISTS " + TABLE_USER;
+
+    public DbHelper(Context context){
+        super(context,DATABASE_NAME,null,DATABASE_VERSION);
     }
 
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        db.execSQL(TABLE_CREATE);
-        this.db = db;
+    public void onCreate(SQLiteDatabase db){
+        db.execSQL(CREATE_USER_TABLE);
     }
 
-    public void insertUsuario(Usuario u){
-        db = this.getWritableDatabase();
-        ContentValues values  = new ContentValues();
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
+        db.execSQL(DROP_USER_TABLE);
+        onCreate(db);
+    }
 
+    public void addUser(Usuario u){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_USER_NAME, u.getLogin());
+        values.put(COLUMN_USER_EMAIL,u.getEmail());
+        values.put(COLUMN_USER_PASSWORD,u.getSenha());
 
-        String query = "select * from usuarios";
-        Cursor cursor = db.rawQuery(query,null);
-        int cont = cursor.getCount();
-
-        values.put(COLUMN_ID,cont);
-        values.put(COLUMN_LOGIN, u.getLogin());
-        values.put(COLUMN_EMAIL, u.getEmail());
-        values.put(COLUMN_PESO, u.getPeso());
-        values.put(COLUMN_ALTURA, u.getAltura());
-
-        db.insert(TABLE_NAME, null, values);
+        db.insert(TABLE_USER,null,values);
         db.close();
     }
 
-    public String searchSenha(String uLogin){
-        db = this.getReadableDatabase();
-        String query  = "SELECT * login,senha FROM "+ TABLE_NAME;
-        Cursor cursor = db.rawQuery(query,null);
-        String l,s ;
-        s = "Nao encontrado";
 
-        if(cursor.moveToFirst()){
-            do{
-                l = cursor.getString(0);
-                if(l.equals(uLogin)){
-                    s = cursor.getString(1);
-                    break;
-                }
-            }while(cursor.moveToNext());
+    public boolean checkUser(String login, String password){ // Ou email
+        String[] collums = {
+                COLUMN_USER_ID
+        };
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selection = COLUMN_USER_NAME + "= ?"+" AND "+ COLUMN_USER_PASSWORD + " =?"; // Ou email
+        String[] selectionArgs = {login,password}; //Ou email
+
+        Cursor cursor = db.query(TABLE_USER, collums,selection,selectionArgs,null,null,null);
+        int cursorCount = cursor.getCount();
+        cursor.close();
+        db.close();
+
+        if(cursorCount>0){
+            return true;
         }
-        return s;
-    }
+        return false;
 
-    @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        String query = "DROP TABLE IF EXISTS "+TABLE_NAME;
-        db.execSQL(query);
-        this.onCreate(db);
     }
 }

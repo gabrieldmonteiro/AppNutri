@@ -44,28 +44,6 @@
             app:layout_constraintTop_toBottomOf="@+id/txtEmailCad"
             tools:layout_editor_absoluteX="85dp" />
 
-        <EditText
-            android:id="@+id/txtAltura"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:ems="10"
-            android:hint="Altura"
-            android:inputType="numberDecimal"
-            app:layout_constraintTop_toBottomOf="@+id/txtPeso"
-            tools:layout_editor_absoluteX="85dp" />
-
-        <EditText
-            android:id="@+id/txtPeso"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:ems="10"
-            android:hint="Peso"
-            android:inputType="numberDecimal"
-            app:layout_constraintTop_toBottomOf="@+id/txtSenhaCad"
-            tools:layout_editor_absoluteX="85dp" />
-
         <Button
             android:id="@+id/btContinuarCad"
             style="@style/Widget.AppCompat.Button.Colored"
