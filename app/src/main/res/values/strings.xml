@@ -10,4 +10,14 @@
     <string name="error_message_Login">Erro_Login</string>
     <string name="error_message_Senha">Erro_Senha</string>
     <string name="error_Senha_match">Erro_Senha</string>
+    <string name="label_Altura">Altura</string>
+    <string name="label_Peso">Peso</string>
+    <string name="botao_CalcularImc">Calcular IMC</string>
+    <string name="label_situacao">Situação</string>
+    <string name="situacao_api">Abaixo do peso ideal</string>
+    <string name="situacao_pn">Peso normal</string>
+    <string name="situacao_ap">Acima do peso (sobrepeso)</string>
+    <string name="situacao_o1">Obesidade Grau 1</string>
+    <string name="situacao_o2">Obesidade Grau 2</string>
+    <string name="situacao_o3">Obesidade Grau 3</string>
 </resources>
