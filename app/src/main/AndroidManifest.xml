@@ -9,28 +9,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.LoginActivity">
-        //Alterar depois o intent-filter para essa activity
-        </activity>
-
-        <activity android:name=".activities.CadastroActivity" />
         <activity android:name=".activities.DadosPessoaActivity" />
-        <activity android:name=".activities.HomeActivity" >
-            <intent-filter> //posicionado para testar funcionalidades sem precisar do Login
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activities.IMCActivity"/> >
-
-
+        <activity android:name=".activities.HomeActivity"/>
+        <activity android:name=".activities.IMCActivity" />
+        >
         <activity
             android:name=".activities.RefeicaoActivity"
             android:label="@string/title_activity_refeicao"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activities.ExercicioActivity" />
-        <activity android:name=".activities.DietaActivity"></activity>
+        <activity android:name=".activities.DietaActivity" />
+        <activity android:name=".activities.CadastroActivity" />
+        <activity android:name=".activities.LoginActivity">
+            <intent-filter>
+                //posicionado para testar funcionalidades sem precisar do Login
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
