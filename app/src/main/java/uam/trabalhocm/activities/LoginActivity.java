@@ -9,6 +9,7 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
+import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,8 +32,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private TextInputEditText textInputEditTextLogin;
     private TextInputEditText textInputEditTextSenha;
 
-    private Button btLogin;
-    private Button btCadastro;
+    private AppCompatButton btLogin;
+    private AppCompatTextView btCadastro;
 
     private InputValidation inputValidation;
     private DbHelper dbh;
@@ -46,8 +47,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         textInputEditTextLogin = (TextInputEditText) findViewById(R.id.textInputEditTextLogin);
         textInputEditTextSenha = (TextInputEditText) findViewById(R.id.textInputEditTextSenha);
 
-        btLogin = (Button) findViewById(R.id.btEntrar);
-        btCadastro = (Button) findViewById(R.id.btCadastro);
+        btLogin = (AppCompatButton) findViewById(R.id.appCompatButtonLogin);
+        btCadastro = (AppCompatTextView) findViewById(R.id.textViewLinkCadastro);
     }
 
     private void initListeners(){
@@ -65,11 +66,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v){
         switch (v.getId()){
-            case R.id.btEntrar:
+            case R.id.appCompatButtonLogin:
                 verifyFromSQLite();
                 break;
 
-            case  R.id.btCadastro:
+            case  R.id.textViewLinkCadastro:
                 Intent intentCadastro = new Intent(getApplicationContext(),CadastroActivity.class);
                 startActivity(intentCadastro);
                 break;

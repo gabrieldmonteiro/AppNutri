@@ -2,4 +2,12 @@
     <string name="app_name">AppNutri</string>
     <string name="logo">logo</string>
     <string name="title_activity_refeicao">RefeicaoActivity</string>
+    <string name="error_message_name">Erro</string>
+    <string name="error_message_email">Erro-Email</string>
+    <string name="error_message_password">Erro-Senha</string>
+    <string name="error_password_match">Erro - Confirmar senha</string>
+    <string name="error_email_exists">Email ja existe</string>
+    <string name="error_message_Login">Erro_Login</string>
+    <string name="error_message_Senha">Erro_Senha</string>
+    <string name="error_Senha_match">Erro_Senha</string>
 </resources>

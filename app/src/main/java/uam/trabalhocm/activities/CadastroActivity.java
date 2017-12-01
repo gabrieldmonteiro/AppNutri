@@ -1,84 +1,134 @@
 package uam.trabalhocm.activities;
 
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
+import android.support.v4.widget.NestedScrollView;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatButton;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
+
 
 import uam.trabalhocm.R;
 import uam.trabalhocm.classes.Usuario;
 import uam.trabalhocm.database.DbHelper;
+import uam.trabalhocm.util.InputValidation;
+
+public class CadastroActivity extends AppCompatActivity implements View.OnClickListener {
+
+        private final AppCompatActivity activity = CadastroActivity.this;
+
+        private NestedScrollView nestedScrollView;
+
+        private TextInputLayout textInputLayoutLogin;
+        private TextInputLayout textInputLayoutEmail;
+        private TextInputLayout textInputLayoutSenha;
+        private TextInputLayout textInputLayoutConfirmaSenha;
+
+        private TextInputEditText textInputEditTextLogin;
+        private TextInputEditText textInputEditTextEmail;
+        private TextInputEditText textInputEditTextSenha;
+        private TextInputEditText textInputEditTextConfirmaSenha;
+
+        private AppCompatButton appCompatButtonContinuar;
+
+        private InputValidation inputValidation;
+        private DbHelper databaseHelper;
+        private Usuario user;
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState){
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_cadastro);
+            getSupportActionBar().hide();
+
+            initViews();
+            initListeners();
+            initObjects();
+        }
+
+        private void initViews(){
+            nestedScrollView = (NestedScrollView) findViewById(R.id.nestedScrollView);
+
+            textInputLayoutLogin = (TextInputLayout) findViewById(R.id.textInputLayoutLogin);
+            textInputLayoutEmail = (TextInputLayout) findViewById(R.id.textInputLayoutEmail);
+            textInputLayoutSenha = (TextInputLayout) findViewById(R.id.textInputLayoutSenha);
+            textInputLayoutConfirmaSenha = (TextInputLayout) findViewById(R.id.textInputEditTextConfirmaSenha);
+
+            textInputEditTextLogin = (TextInputEditText) findViewById(R.id.textInputEditTextLogin);
+            textInputEditTextEmail = (TextInputEditText) findViewById(R.id.textInputEditTextEmail);
+            textInputEditTextSenha = (TextInputEditText) findViewById(R.id.textInputEditTextSenha);
+            textInputEditTextConfirmaSenha = (TextInputEditText) findViewById(R.id.textInputEditTextConfirmaSenha);
+
+            appCompatButtonContinuar = (AppCompatButton) findViewById(R.id.appCompatButtonContinuar);
 
 
+        }
 
-//REFAZER ACTIVITY
-public class CadastroActivity extends Activity {
+        private void initListeners(){
+            appCompatButtonContinuar.setOnClickListener(this);
+        }
 
-    /*DbHelper dbH = new DbHelper(this);
+        private void initObjects(){
+            inputValidation = new InputValidation(activity);
+            databaseHelper = new DbHelper(activity);
+            user = new Usuario();
+        }
 
-    private Button btcadastrar;
-    private EditText login,email,senha;
-    DbHelper db = new DbHelper(this);
+        @Override
+        public void onClick(View v){
+            switch (v.getId()){
+                case R.id.appCompatButtonContinuar:
+                    postDataToSQLite();
+                    break;
+            }
+        }
 
+        private void postDataToSQLite(){
+            if (!inputValidation.isInputEditTextFieldFilled(textInputEditTextLogin, textInputLayoutLogin, getString(R.string.error_message_Login))) {
+                return;
+            }
+            if (!inputValidation.isInputEditTextFieldFilled(textInputEditTextEmail, textInputLayoutEmail, getString(R.string.error_message_email))) {
+                return;
+            }
+            if (!inputValidation.isInputEditTextEmail(textInputEditTextEmail, textInputLayoutEmail, getString(R.string.error_message_email))) {
+                return;
+            }
+            if (!inputValidation.isInputEditTextFieldFilled(textInputEditTextSenha, textInputLayoutSenha, getString(R.string.error_message_Senha))) {
+                return;
+            }
+            if (!inputValidation.isInputEditTextMatches(textInputEditTextSenha, textInputEditTextConfirmaSenha,
+                    textInputLayoutConfirmaSenha, getString(R.string.error_Senha_match))) {
+                return;
+            }
 
+            if (!databaseHelper.checkUser(textInputEditTextLogin.getText().toString().trim(),textInputEditTextSenha.getTag().toString().trim())){
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cadastro);
+                user.setLogin(textInputEditTextLogin.getText().toString().trim());
+                user.setEmail(textInputEditTextEmail.getText().toString().trim());
+                user.setSenha(textInputEditTextSenha.getText().toString().trim());
 
-        //PEGANDO COMPONENTES DAS VIEWS
-        login = (EditText) findViewById(R.id.txtLoginCad);
-        email = (EditText) findViewById(R.id.txtEmailCad);
-        senha = (EditText) findViewById(R.id.txtSenhaCad);
-
-
-
-
-
-
-
-
-        //BOTAO CADASTRAR
-        btcadastrar = (Button) findViewById(R.id.btContinuarCad);
-
-        btcadastrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                // VARS PARA MANIPULACAO E VALIDACAO
-                final String strLogin = login.getText().toString();
-                final String strEmail = email.getText().toString() ;
-                final String strSenha = senha.getText().toString() ;
-
-                if(strLogin.trim().length() == 0 && strEmail.trim().length()==0 && strSenha.trim().length()==0){
-                    //Toast.makeText(CadastroActivity.this, "Preencha todos os campos !!! ", Toast.LENGTH_SHORT).show();
-                    Toast.makeText(CadastroActivity.this, strLogin+"|"+strEmail+"|"+strSenha, Toast.LENGTH_LONG).show();
-                }else {
-                    Usuario objUsuario = new Usuario();
-                    objUsuario.setLogin(strLogin);
-                    objUsuario.setEmail(strEmail);
-                    objUsuario.setSenha(strSenha);
-
-                    dbH.insertUsuario(objUsuario);
+                databaseHelper.addUser(user);
 
 
-                    //TOAST CADASTRO OK
-                    Toast.makeText(CadastroActivity.this, "Cadastro realizado com sucesso !!! :)", Toast.LENGTH_SHORT).show();
+                Snackbar.make(nestedScrollView, "OK", Snackbar.LENGTH_LONG).show();
+                limparCampos();
 
-                    //NAV ACTIVITY
-                    Intent intent = new Intent(CadastroActivity.this, HomeActivity.class);
-                    //Put Extra p/ nao precisar consultar de novo no DB
-                    intent.putExtra("nomeUsuario", login.getText().toString());
-                    startActivity(intent);
-                }
-                }
 
-            //}
-        });
-    }*/
+            } else {
+
+                Snackbar.make(nestedScrollView, getString(R.string.error_email_exists), Snackbar.LENGTH_LONG).show();
+            }
+
+
+        }
+
+        private void limparCampos(){
+            textInputEditTextLogin.setText(null);
+            textInputEditTextEmail.setText(null);
+            textInputEditTextSenha.setText(null);
+            textInputEditTextConfirmaSenha.setText(null);
+        }
 }
