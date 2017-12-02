@@ -2,10 +2,8 @@ package uam.trabalhocm.activities;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -48,7 +46,7 @@ public class HomeActivity extends Activity {
         btDieta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HomeActivity.this,DietaActivity.class);
+                Intent intent = new Intent(HomeActivity.this,AcademiaActivity.class);
                 startActivity(intent);
             }
         });
