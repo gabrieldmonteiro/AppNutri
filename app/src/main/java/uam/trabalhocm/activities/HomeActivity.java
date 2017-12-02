@@ -12,7 +12,7 @@ import uam.trabalhocm.R;
 public class HomeActivity extends Activity {
 
     private TextView labelUsuario;
-    private ImageButton btIMC, btRef, btDieta, btExs;
+    private ImageButton btIMC, btRef, btAcademia, btExs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +22,7 @@ public class HomeActivity extends Activity {
 
         btIMC = (ImageButton) findViewById(R.id.imgIMC);
         btRef = (ImageButton) findViewById(R.id.imgRefeicao);
-        btDieta = (ImageButton) findViewById(R.id.imgDieta);
+        btAcademia = (ImageButton) findViewById(R.id.imgAcademias);
         btExs = (ImageButton) findViewById(R.id.imgExercicios);
 
         //Redirecionamento para as Activities !!!
@@ -43,7 +43,7 @@ public class HomeActivity extends Activity {
             }
         });
         //ACADEMIAS
-        btDieta.setOnClickListener(new View.OnClickListener() {
+        btAcademia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomeActivity.this,AcademiaActivity.class);
