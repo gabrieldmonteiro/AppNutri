@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "326282554837",
+    "firebase_url": "https://appnutri-c247a.firebaseio.com",
+    "project_id": "appnutri-c247a",
+    "storage_bucket": "appnutri-c247a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:326282554837:android:a90a6d58e4344027",
+        "android_client_info": {
+          "package_name": "uam.trabalhocm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "326282554837-qviqgsr8a6i2o4960vhtdk2nhtpt4i87.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "uam.trabalhocm",
+            "certificate_hash": "50e51795863f9e54520d5e52b24f392037c727b4"
+          }
+        },
+        {
+          "client_id": "326282554837-9ot4kie84vknmnbbiiar2344log1u2fl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXgmNqoLF0GpPY1gsyM7DzXJ7XXt6HvXk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "326282554837-9ot4kie84vknmnbbiiar2344log1u2fl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

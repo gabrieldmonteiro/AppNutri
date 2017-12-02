@@ -20,7 +20,7 @@ public class HomeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         labelUsuario = (TextView) findViewById(R.id.lbUsuarioOn);
-        labelUsuario.setText(getIntent().getStringExtra("nomeUsuario"));
+        labelUsuario.setText(getIntent().getStringExtra("USUARIO"));
 
         btIMC = (ImageButton) findViewById(R.id.imgIMC);
         btRef = (ImageButton) findViewById(R.id.imgRefeicao);
