@@ -12,7 +12,7 @@
         <activity android:name=".activities.DadosPessoaActivity" />
         <activity android:name=".activities.HomeActivity"/>
         <activity android:name=".activities.IMCActivity" />
-        >
+
         <activity
             android:name=".activities.RefeicaoActivity"
             android:label="@string/title_activity_refeicao"
