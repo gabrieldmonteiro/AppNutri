@@ -41,6 +41,8 @@ public class RefeicaoActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_refeicao);
 
+
+
         try {
             txtAlimento = (EditText) findViewById(R.id.txtAlimentoRef);
             btAdd = (FloatingActionButton) findViewById(R.id.fabRef);
@@ -50,6 +52,8 @@ public class RefeicaoActivity extends Activity {
 
             //Banco de Dados
             bancoDados = openOrCreateDatabase("appnutrirefs", MODE_PRIVATE, null);
+
+
 
             //tabela refs
             bancoDados.execSQL("CREATE TABLE IF NOT EXISTS refeicoes(id INTEGER PRIMARY KEY AUTOINCREMENT, refeicao VARCHAR) ");
@@ -147,7 +151,7 @@ public class RefeicaoActivity extends Activity {
 
     private void removerRefeicao(int id){
         try{
-            bancoDados.execSQL("DELETE FROM refeicoes WHERE refeicao = "+id);
+            bancoDados.execSQL("DELETE FROM refeicoes WHERE id = "+id);
             recuperarRefeicoes();
             Toast.makeText(RefeicaoActivity.this, "Refeicao removida com sucesso!", Toast.LENGTH_SHORT).show();
 
