@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import uam.trabalhocm.R;
 
@@ -50,23 +51,27 @@ public class ExercicioActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String url= "https://www.google.com.br/";
+                if(selecionado.equals("")){
+                    Toast.makeText(getApplicationContext(),"Selecione um objetivo !!!",Toast.LENGTH_SHORT).show();
+                }else {
 
-                switch(selecionado){
-                    case "Emagrecer":
-                        url = "https://tinyurl.com/emagrecerappnutri";
-                        break;
+                    switch (selecionado) {
+                        case "Emagrecer":
+                            url = "https://tinyurl.com/emagrecerappnutri";
+                            break;
 
-                    case "Ganhar Massa Muscular":
-                        url = "https://tinyurl.com/massamuscularappnutri";
-                        break;
+                        case "Ganhar Massa Muscular":
+                            url = "https://tinyurl.com/massamuscularappnutri";
+                            break;
 
-                    case "Resistencia":
-                        url = "https://tinyurl.com/resistenciaappnutri";
-                        break;
+                        case "Resistencia":
+                            url = "https://tinyurl.com/resistenciaappnutri";
+                            break;
+                    }
+
+                    Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse(url));
+                    startActivity(viewIntent);
                 }
-
-                Intent viewIntent = new Intent("android.intent.action.VIEW", Uri.parse(url));
-                startActivity(viewIntent);
             }
         });
 
