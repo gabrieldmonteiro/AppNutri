@@ -1,16 +1,17 @@
 package uam.trabalhocm.activities;
 
-import android.support.v4.app.FragmentActivity;
-import android.os.Bundle;
+        import android.support.v4.app.FragmentActivity;
+        import android.os.Bundle;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+        import com.google.android.gms.maps.CameraUpdateFactory;
+        import com.google.android.gms.maps.GoogleMap;
+        import com.google.android.gms.maps.OnMapReadyCallback;
+        import com.google.android.gms.maps.SupportMapFragment;
+        import com.google.android.gms.maps.model.CameraPosition;
+        import com.google.android.gms.maps.model.LatLng;
+        import com.google.android.gms.maps.model.MarkerOptions;
 
-import uam.trabalhocm.R;
+        import uam.trabalhocm.R;
 
 public class AcademiaActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -20,10 +21,15 @@ public class AcademiaActivity extends FragmentActivity implements OnMapReadyCall
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_academia);
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+
+
+
     }
 
 
@@ -40,9 +46,46 @@ public class AcademiaActivity extends FragmentActivity implements OnMapReadyCall
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+        LatLng anhembiMorumbi = new LatLng(-23.6001012, -46.6769765);
+        mMap.addMarker(new MarkerOptions().position(anhembiMorumbi).title("Anhembi Morumbi"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(anhembiMorumbi));
+
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(anhembiMorumbi, 15));
+
+
+        mMap.animateCamera(CameraUpdateFactory.zoomIn());
+
+
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(10), 6000, null);
+
+
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(anhembiMorumbi)
+                .zoom(15)
+                .bearing(45)
+                .tilt(30)
+                .build();
+        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
+        mMap.getUiSettings().setZoomControlsEnabled(true);
+
+
+
+        LatLng teamNogueira = new LatLng(-23.5999339,-46.6763702);
+        mMap.addMarker(new MarkerOptions().position(teamNogueira).title("Team Nogueira"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(teamNogueira));
+
+        LatLng vertical = new LatLng(-23.601695,-46.675762);
+        mMap.addMarker(new MarkerOptions().position(vertical).title("Vertical"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(vertical));
+
+        LatLng bodyTech = new LatLng(-23.5948884,-46.679117);
+        mMap.addMarker(new MarkerOptions().position(bodyTech).title("Bodytech"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(bodyTech));
+
+
+
     }
 }

@@ -42,7 +42,7 @@ public class HomeActivity extends Activity {
                 startActivity(intent);
             }
         });
-        //DIETA
+        //ACADEMIAS
         btDieta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
